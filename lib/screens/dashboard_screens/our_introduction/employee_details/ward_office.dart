@@ -1,0 +1,257 @@
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:gandakimun/constants.dart';
+// import 'package:gandakimun/controllers/appcontroller.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/controller/our_information.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward1.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward10.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward11.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward12.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward13.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward14.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward2.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward3.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward4.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward5.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward6.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward7.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward8.dart';
+// import 'package:gandakimun/screens/dashboard_screens/our_introduction/employee_details/ward/ward9.dart';
+// import 'package:gandakimun/widget/appbar.dart';
+// import 'package:gandakimun/widget/custom_tile.dart';
+// import 'package:gandakimun/widget/heading.dart';
+// import 'package:gandakimun/widget/shimmer.dart';
+//
+// class WardOfficeScreen extends GetView<AppController> {
+//   WardOfficeScreen({Key? key}) : super(key: key);
+//
+//   @override
+//   final controller = Get.put(AppController());
+//   final ourInformationController = Get.put(OurInformationController());
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     WidgetsBinding.instance.addPostFrameCallback((_) {
+//       ourInformationController.fetchWards();
+//     });
+//     return Scaffold(
+//         backgroundColor: AppColor.backgroundClr,
+//         appBar: buildAppbar(
+//           controller.isNepali.value ? 'वडा कार्यालयहरु' : 'Ward Offices',
+//         ),
+//         body: SingleChildScrollView(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               const SizedBox(
+//                 height: 20,
+//               ),
+//               buildHeading(
+//                 controller.isNepali.value
+//                     ? 'वार्ड कार्यालयहरु'
+//                     : 'Ward Offices',
+//               ),
+//               const SizedBox(height: 10),
+//               ourInformationController.loadingWards.isFalse
+//                   ? ListView.builder(
+//                       shrinkWrap: true,
+//                       physics: const BouncingScrollPhysics(),
+//                       itemCount: ourInformationController.wardlist.length,
+//                       itemBuilder: (context, index) {
+//                         var data = ourInformationController.wardlist[index];
+//                         return CustomTile(
+//                             ontap: () {
+//                               switch (index) {
+//                                 case 0:
+//                                   {
+//                                     Get.to(() => const Ward1OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 1:
+//                                   {
+//                                     Get.to(() => Ward2OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 2:
+//                                   {
+//                                     Get.to(() => Ward3OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 3:
+//                                   {
+//                                     Get.to(() => Ward4OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 4:
+//                                   {
+//                                     Get.to(() => Ward5OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 5:
+//                                   {
+//                                     Get.to(() => Ward6OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 6:
+//                                   {
+//                                     Get.to(() => Ward7OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 7:
+//                                   {
+//                                     Get.to(() => Ward8OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 8:
+//                                   {
+//                                     Get.to(() => Ward9OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 9:
+//                                   {
+//                                     Get.to(() => Ward10OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 10:
+//                                   {
+//                                     Get.to(() => Ward11OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 11:
+//                                   {
+//                                     Get.to(() => Ward12OfficersScreen());
+//                                   }
+//                                   break;
+//
+//                                 case 12:
+//                                   {
+//                                     Get.to(() => Ward13OfficersScreen());
+//                                   }
+//                                   break;
+//                                 case 13:
+//                                   {
+//                                     Get.to(() => Ward14OfficersScreen());
+//                                   }
+//                                   break;
+//
+//                                 default:
+//                               }
+//                             },
+//                             title: controller.isNepali.value
+//                                 ? data.title!.np.toString()
+//                                 : data.title!.en.toString());
+//                       })
+//                   : Padding(
+//                       padding: const EdgeInsets.all(10.0),
+//                       child: ListView.builder(
+//                         itemCount: 10,
+//                         shrinkWrap: true,
+//                         itemBuilder: (context, index) {
+//                           return const Skelton(
+//                               height: 50, width: double.infinity);
+//                         },
+//                       ),
+//                     ),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward1OfficersScreen());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '१ नं वडा कार्यालयहरु'
+//               //         : "1 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward2OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '२ नं वडा कार्यालयहरु'
+//               //         : "2 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward3OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '३ नं वडा कार्यालयहरु'
+//               //         : "3 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward4OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '४ नं वडा कार्यालयहरु'
+//               //         : "4 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward5OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '५ नं वडा कार्यालयहरु'
+//               //         : "5 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward6OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '६ नं वडा कार्यालयहरु'
+//               //         : "6 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward7OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '७ नं वडा कार्यालयहरु'
+//               //         : "7 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward8OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '८ नं वडा कार्यालयहरु'
+//               //         : "8 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward9OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '९ नं वडा कार्यालयहरु'
+//               //         : "9 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward10OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '१० नं वडा कार्यालयहरु'
+//               //         : "10 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward11OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '११ नं वडा कार्यालयहरु'
+//               //         : "11 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward12OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '१२ नं वडा कार्यालयहरु'
+//               //         : "12 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward13OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '१३ नं वडा कार्यालयहरु'
+//               //         : "13 Ward Offices"),
+//               // CustomTile(
+//               //     ontap: () {
+//               //       Get.to(Ward14OfficerDetails());
+//               //     },
+//               //     title: controller.isNepali.value
+//               //         ? '१४ नं वडा कार्यालयहरु'
+//               //         : "14 Ward Offices"),
+//             ],
+//           ),
+//         ));
+//   }
+// }

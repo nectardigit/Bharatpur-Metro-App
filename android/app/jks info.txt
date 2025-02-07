@@ -1,0 +1,5 @@
+JKS key
+
+password: gandaki
+keyalies: key_alias_name
+Answers: nectar
